@@ -1,0 +1,150 @@
+.container {
+    display: flex;
+    padding: 20px;
+    padding-bottom: 50px;
+    gap: 40px;
+    background-color: #2d3d52;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 4px 20px #000;
+
+}
+
+.menu {
+    width: 220px;
+    background-color: #0a1c2c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.menu-topo ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-topo ul li {
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.menu-topo ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #1ecfff;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.menu-topo ul li a:hover {
+    background-color: #1ecfff;
+    color: #07293f;
+    transform: scale(1.05);
+}
+
+.menu-topo ul li a#logout:hover {
+    background-color: #e02d2d;
+    color: #fff;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    
+}
+
+.barcos-container h2 {
+    color: #1ecfff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.barcos-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 0;
+    background-color: #07293f;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+.barcos-container ul li {
+    background-color: #0a1c2c;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: #1ecfff;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.barcos-container ul li:not(:last-child) {
+    margin-right: 15px;
+}
+.barcos-container ul li:hover {
+    background-color: #1ecfff;
+    color: #07293f;
+}
+.barcos-container ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+.pedidos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.pedido-card {
+    background-color: #07293f;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.pedido-card.visto {
+    opacity: 0.6;
+    background-color: #1a1f3a;
+}
+
+.pedido-card h3 {
+    margin: 0;
+    color: #1ecfff;
+}
+
+.pedido-card button.btn-visto {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0da8e9;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pedido-card button.btn-visto:hover {
+    background-color: #1ecfff;
+}
+.pedidos{
+    color:#1ecfff ;
+}
+

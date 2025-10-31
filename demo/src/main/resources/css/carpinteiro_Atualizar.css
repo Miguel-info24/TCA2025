@@ -1,0 +1,179 @@
+/* === CORRIGE SCROLL GLOBAL === */
+html, body {
+    overflow: auto !important;
+    height: auto !important;
+}
+
+/* === CONTAINER GERAL === */
+.container {
+    display: flex;
+    gap: 30px;
+    background-color: #2d3d52;
+    border-radius: 12px;
+    margin: 20px;
+    box-shadow: 0 4px 20px #000;
+    min-height: calc(90vh - 120px);
+    justify-content: flex-start;
+    padding: 30px;
+}
+
+/* === MENU LATERAL === */
+.menu {
+    width: 200px;
+    background-color: #0a1c2c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+    margin-left: 10px; /* espaçamento suave da lateral */
+}
+
+.menu-topo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* === MENU LATERAL === */
+.menu {
+    width: 200px;
+    background-color: #0a1c2c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.menu-topo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-topo ul li {
+    margin-bottom: 12px;
+    transition: transform 0.2s ease;
+}
+
+.menu-topo ul li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #1ecfff;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.menu-topo ul li a:hover {
+    background-color: #1ecfff;
+    color: #07293f;
+    transform: scale(1.05);
+}
+
+/* === CONTEÚDO === */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    color: #fff;
+    max-width: 800px;
+    transform: scale(1); /* diminui tudo proporcionalmente */
+    transform-origin: top center;
+}
+
+/* === TÍTULO === */
+.content h2 {
+    color: #1ecfff;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* === FORMULÁRIO === */
+.pedido-form {
+    background-color: #07293f;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pedido-form label {
+    font-weight: bold;
+    color: #cce7f5;
+    font-size: 0.9rem;
+}
+
+.pedido-form input,
+.pedido-form textarea,
+.pedido-form select {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    background-color: #f4f7f8;
+    color: #07293f;
+}
+
+.pedido-form textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.pedido-form input:focus,
+.pedido-form textarea:focus,
+.pedido-form select:focus {
+    border: 2px solid #1ecfff;
+}
+
+.pedido-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0da8e9;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.pedido-form button:hover {
+    background-color: #1ecfff;
+    color: #07293f;
+    transform: scale(1.03);
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .content {
+        transform: scale(1);
+        max-width: 100%;
+    }
+
+    .pedido-form {
+        max-width: 100%;
+    }
+}

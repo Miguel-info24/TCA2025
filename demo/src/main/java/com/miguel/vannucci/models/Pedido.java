@@ -1,0 +1,46 @@
+package com.miguel.vannucci.models;
+
+import java.time.LocalDate;
+
+public class Pedido {
+    private String id;
+    private String descricao;
+    private double preco;
+    private String status;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
+    private Barco barco;
+
+    public Pedido(String id, String descricao, double preco,
+                  String status, LocalDate dataInicio, LocalDate dataFim, Barco barco) {
+        this.id = id;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.barco = barco;
+    }
+
+    public String getId() { return id; }
+    public String getDescricao() { return descricao; }
+    public double getPreco() { return preco; }
+    public String getStatus() { return status; }
+    public LocalDate getDataInicio() { return dataInicio; }
+    public LocalDate getDataFim() { return dataFim; }
+    public Barco getBarco() { return barco; }
+
+    public void setStatus(String status) { this.status = status; }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id='" + id + '\'' +
+                ", preco=" + preco +
+                ", status='" + status + '\'' +
+                ", dataInicio=" + dataInicio +
+                ", dataFim=" + dataFim +
+                ", barco=" + barco +
+                '}';
+    }
+}

@@ -1,0 +1,176 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #011223;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  width: 100%;
+  padding: 20px 50px;
+  background-color: #07293f;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+header .logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header img {
+  width: 50px;
+}
+
+/* Container principal */
+.container {
+  flex: 1; /* ocupa espaço restante depois do header */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px; /* mais espaçamento entre esquerda/direita */
+  padding: 60px 50px; /* mais espaço interno */
+  box-sizing: border-box;
+  overflow-y: auto; /* permite scroll em telas pequenas */
+  min-height: calc(100vh - 100px);
+  flex-wrap: wrap;
+}
+
+/* Lado esquerdo */
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px; /* evita ficar muito fino */
+  text-align: center;
+}
+
+.left .barco {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.left .texto {
+  color: #1ecfff;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* Lado direito */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 400px; /* evita form muito estreito */
+}
+
+/* Box de signup */
+.signup-box {
+  width: 100%;
+  max-width: 500px; /* aumenta a largura máxima */
+  padding: 40px;
+  border-radius: 15px;
+  background: #07293f;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Form e botões */
+.signup-box h2 {
+  color: #1ecfff;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.signup-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.signup-box input,
+.signup-box select {
+  width: 100%;
+  padding: 14px; /* mais espaçamento interno */
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #223a73;
+  color: #fff;
+  font-size: 14px;
+}
+
+.signup-box input::placeholder {
+  color: #ccc;
+}
+
+.signup-box button {
+  width: 100%;
+  padding: 16px; /* botão maior */
+  background-color: #0da8e9;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+.signup-box button:hover {
+  background-color: #1ecfff;
+}
+
+/* Redirect */
+.redirect {
+  margin-top: 15px;
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.redirect a {
+  color: #1ecfff;
+  text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 40px 20px;
+  }
+
+  .left, .right {
+    min-width: 300px;
+  }
+
+  .signup-box {
+    max-width: 90%;
+    padding: 35px;
+  }
+}
