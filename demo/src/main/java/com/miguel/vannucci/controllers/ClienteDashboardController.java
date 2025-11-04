@@ -2,6 +2,8 @@ package com.miguel.vannucci.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalDate;
+import com.miguel.vannucci.models.Barco;
 
 import com.miguel.vannucci.models.User;
 
@@ -32,9 +34,21 @@ public class ClienteDashboardController {
 
     public Handler fazerPedido = ctx -> {
         ctx.render("cliente_fazerPedido.ftl");
+
+        int id = Integer.parseInt(ctx.formParam("id"));
+        String descricao = ctx.formParam("descricao");
+        double preco = Double.parseDouble(ctx.formParam("preco"));
+        String status = ctx.formParam("status");
+        LocalDate dataInicio = LocalDate.parse(ctx.formParam("dataInicio"));
+        LocalDate dataFim = LocalDate.parse(ctx.formParam("dataFim"));
+        Barco barco = SQLgetBarco();
     };
 
     public Handler cancelarPedido = ctx -> {
         ctx.render("cliente_cancelarPedido.ftl");
     };
+
+    public Barco SQLgetBarco() {
+        return null; 
+    }
 }

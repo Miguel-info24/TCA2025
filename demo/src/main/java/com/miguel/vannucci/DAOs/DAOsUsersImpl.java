@@ -17,7 +17,7 @@ public class DAOsUsersImpl implements UserDAO {
 
 
     @Override
-    public int addUser(User user) {
+    public void addUser(User user) {
         String query = "INSERT INTO TCA_Barcos_User (cpf, nome, email, senha, phone, tipo) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, user.getCpf());
@@ -33,11 +33,11 @@ public class DAOsUsersImpl implements UserDAO {
             stmt.setString(6, user.getType());
             System.out.println("Type" + user.getType());
             stmt.execute();
-            return 1;
+            return;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return;
     }
 
     @Override

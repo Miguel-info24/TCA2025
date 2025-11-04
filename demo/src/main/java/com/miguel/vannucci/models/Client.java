@@ -6,8 +6,11 @@ import java.util.List;
 public class Client extends User {
     private List<Pedido> pedidos = new ArrayList<>();
 
-    public Client(String name, String email, String password, String cpf, String phone) {
+    public Client( String name, String email, String password, String cpf, String phone) {
         super(name, email, password, cpf, phone, "cliente");
+    }
+    public Client() {
+        super();
     }
 
     public List<Pedido> getPedidos() { return pedidos; }

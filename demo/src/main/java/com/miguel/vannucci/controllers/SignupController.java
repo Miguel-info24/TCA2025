@@ -1,5 +1,7 @@
 package com.miguel.vannucci.controllers;
 
+import com.miguel.vannucci.DAOs.DAOsCarpinteiroImpl;
+import com.miguel.vannucci.DAOs.DAOsClientsImpl;
 import com.miguel.vannucci.DAOs.DAOsUsersImpl;
 import com.miguel.vannucci.models.Carpinteiro;
 import com.miguel.vannucci.models.Client;
@@ -36,9 +38,20 @@ public class SignupController {
         } 
         
         DAOsUsersImpl userDAO = new DAOsUsersImpl();
-        int resultado = userDAO.addUser(novo);
+        DAOsClientsImpl clientDAO = new DAOsClientsImpl();
+        DAOsCarpinteiroImpl carpinteiroDAO = new DAOsCarpinteiroImpl();
+
+        userDAO.addUser(novo);
+        int Result = 0;
+
+        if (novo instanceof Client) {
+            Result = clientDAO.addClient((Client) novo);
+        }
+        else {
+            Result = carpinteiroDAO.addCarpinteiro((Carpinteiro) novo);
+
+        }
         ctx.redirect("/"); 
-        System.out.println("Recebido: " + name + ", " + email + ", " + password + ", " + cpf + ", " + phone + ", " + tipoUsuario);
         
     };
 }

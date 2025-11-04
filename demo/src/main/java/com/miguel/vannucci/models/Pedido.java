@@ -3,7 +3,7 @@ package com.miguel.vannucci.models;
 import java.time.LocalDate;
 
 public class Pedido {
-    private String id;
+    private int id;
     private String descricao;
     private double preco;
     private String status;
@@ -11,7 +11,7 @@ public class Pedido {
     private LocalDate dataFim;
     private Barco barco;
 
-    public Pedido(String id, String descricao, double preco,
+    public Pedido(int id, String descricao, double preco,
                   String status, LocalDate dataInicio, LocalDate dataFim, Barco barco) {
         this.id = id;
         this.descricao = descricao;
@@ -22,7 +22,7 @@ public class Pedido {
         this.barco = barco;
     }
 
-    public String getId() { return id; }
+    public int getId() { return id; }
     public String getDescricao() { return descricao; }
     public double getPreco() { return preco; }
     public String getStatus() { return status; }

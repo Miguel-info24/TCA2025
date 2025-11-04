@@ -10,6 +10,10 @@ public class Carpinteiro extends User {
         super(name, email, password, cpf, phone, "carpinteiro");
     }
 
+    public Carpinteiro() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     public List<Pedido> getTrabalhos() { return trabalhos; }
     public void addTrabalho(Pedido pedido) { trabalhos.add(pedido); }
 

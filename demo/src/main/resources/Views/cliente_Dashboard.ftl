@@ -34,11 +34,11 @@
             <h2>Olá, ${name}</h2>
             <h2 class="pedidos">Atualizações do seu pedido</h2>
             <div class="pedidos-container" id="pedidos-container">
+                
             </div>
         </div>
     </section>
 
-    <script src="js/cliente_Dashboard.js"></script>
 </body>
 
 </html>
