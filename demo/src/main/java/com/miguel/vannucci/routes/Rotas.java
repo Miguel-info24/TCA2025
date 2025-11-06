@@ -22,15 +22,18 @@ public class Rotas {
     }
 
     public void registraRotas(Javalin app) {
+
         app.get("/carpinteiro_Dashboard", carpinteiroDashboardController.get);
         app.get("/carpinteiro_Dashboard/atualizar", carpinteiroDashboardController.atualizar);
+
         app.get("/", loginController.get);
         app.post("/", loginController.post);
         app.get("/signup", signupController.get);
         app.post("/signup", signupController.post);
-        app.get("/cliente_Dashboard", clienteController.get);
-        app.get("/cliente_Dashboard/fazerPedido", clienteController.fazerPedido);
-        app.get("/cliente_Dashboard/cancelarPedido", clienteController.cancelarPedido);
 
+        app.get("/cliente_Dashboard", clienteController.get);
+        app.get("/cliente_Dashboard/fazerPedido", clienteController.exibirFazerPedido); // Exibe página
+        app.post("/cliente_Dashboard/fazerPedido", clienteController.fazerPedido);      // Envia formulário
+        app.get("/cliente_Dashboard/cancelarPedido", clienteController.cancelarPedido);
     }
 }

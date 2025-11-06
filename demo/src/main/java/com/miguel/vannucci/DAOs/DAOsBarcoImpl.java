@@ -10,14 +10,15 @@ public class DAOsBarcoImpl implements barcoDAO{
     
     private static final Connection connection = com.miguel.vannucci.database.FabricaConexoes.getInstance().getConnection();
     @Override
-    public int addBarco(int id, String nome, String tipo, double tamanho, String material) {
-        String query = "INSERT INTO TCA_Barcos (id, nome, tipo, tamanho, material) VALUES (?, ?, ?, ?, ?)";
+    public int addBarco(int id, String nome, String tipo, String cor, double tamanho, String material) {
+        String query = "INSERT INTO TCA_Barcos (id, nome, tipo, cor, tamanho, material) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
-            stmt.setString(2, nome);
+            stmt.setString(2, nome);   
             stmt.setString(3, tipo);
-            stmt.setDouble(4, tamanho);
-            stmt.setString(5, material);
+            stmt.setString(4, cor);
+            stmt.setDouble(5, tamanho);
+            stmt.setString(6, material);
             stmt.execute();
             return 1;
         } catch (Exception e) {
@@ -27,14 +28,15 @@ public class DAOsBarcoImpl implements barcoDAO{
     }
 
     @Override
-    public boolean updateBarco(int id, String nome, String tipo, double tamanho, String material) {
-        String query = "UPDATE TCA_Barcos SET nome = ?, tipo = ?, tamanho = ?, material = ? WHERE id = ?";
+    public boolean updateBarco(int id, String nome, String tipo, String cor, double tamanho, String material) {
+        String query = "UPDATE TCA_Barcos SET nome = ?, tipo = ?, cor = ?, tamanho = ?, material = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
             stmt.setString(2, tipo);
-            stmt.setDouble(3, tamanho);
-            stmt.setString(4, material);
-            stmt.setInt(5, id);
+            stmt.setString(3, cor);
+            stmt.setDouble(4, tamanho);
+            stmt.setString(5, material);
+            stmt.setInt(6, id);
             stmt.execute();
             return true;
         } catch (Exception e) {
@@ -64,9 +66,10 @@ public class DAOsBarcoImpl implements barcoDAO{
             java.util.List<Barco> barcos = new java.util.ArrayList<>();
             while (rs.next()) {
                 Barco barco = new Barco(
-                        rs.getString("id"),
+                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("tipo"),
+                        rs.getString("cor"),
                         rs.getDouble("tamanho"),
                         rs.getString("material")
                 );
@@ -88,9 +91,10 @@ public class DAOsBarcoImpl implements barcoDAO{
                 java.util.List<Barco> barcos = new java.util.ArrayList<>();
                 while (rs.next()) {
                     Barco barco = new Barco(
-                            rs.getString("id"),
+                            rs.getInt("id"),
                             rs.getString("nome"),
                             rs.getString("tipo"),
+                            rs.getString("cor"),
                             rs.getDouble("tamanho"),
                             rs.getString("material")
                     );

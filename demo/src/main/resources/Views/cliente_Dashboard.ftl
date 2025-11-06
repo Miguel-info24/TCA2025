@@ -34,8 +34,22 @@
             <h2>Olá, ${name}</h2>
             <h2 class="pedidos">Atualizações do seu pedido</h2>
             <div class="pedidos-container" id="pedidos-container">
-                
+                <#if pedidos?? && (pedidos?size > 0)>
+                    <#list pedidos as p>
+                        <div class="pedido-card">
+                            <h3>Pedido #${p.id}</h3>
+                            <p><strong>Descrição:</strong> ${p.descricao}</p>
+                            <p><strong>Preço:</strong> R$ ${p.preco}</p>
+                            <p><strong>Status:</strong> ${p.status}</p>
+                            <p><strong>Início:</strong> ${p.dataInicio}</p>
+                            <p><strong>Entrega:</strong> ${p.dataFim}</p>
+                        </div>
+                    </#list>
+                    <#else>
+                        <p>Você ainda não fez nenhum pedido.</p>
+                </#if>
             </div>
+
         </div>
     </section>
 
