@@ -1,44 +1,44 @@
 package com.miguel.vannucci.models;
 
 public class Barco {
-    private int id;
-    private String nome;
-    private String tipo; // Pesca, Passeio, Transporte
-    private String cor;
-    private double tamanho;
-    private String material;
+    private int idBarco;          // PK
+    private String nomeBarco;     // Ex: "Barco de pesca pequeno"
+    private String tipoBarco;     // Ex: "Pesca", "Passeio", "Transporte"
+    private String materialBarco; // Ex: "Madeira", "Fibra de vidro"
 
-    public Barco(int id, String nome, String tipo, String cor, double tamanho, String material) {
-        this.id = id;
-        this.tipo = tipo;
-        this.nome = nome;
-        this.cor = cor;
-        this.tamanho = tamanho;
-        this.material = material;
+    // 🔹 Construtores
+    public Barco(int idBarco, String nomeBarco, String tipoBarco, String materialBarco) {
+        this.idBarco = idBarco;
+        this.nomeBarco = nomeBarco;
+        this.tipoBarco = tipoBarco;
+        this.materialBarco = materialBarco;
     }
 
-    public int getId() { return id; }
-    public String getNome() { return nome; }    
-    public String getTipo() { return tipo; }
-    public String getCor() { return cor; }
-    public double getTamanho() { return tamanho; }
-    public String getMaterial() { return material; }
+    public Barco(String nomeBarco, String tipoBarco, String materialBarco) {
+        this.nomeBarco = nomeBarco;
+        this.tipoBarco = tipoBarco;
+        this.materialBarco = materialBarco;
+    }
 
-    public void setNome(String nome) { this.nome = nome; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-    public void setCor(String cor) { this.cor = cor; }
-    public void setTamanho(double tamanho) { this.tamanho = tamanho; }
-    public void setMaterial(String material) { this.material = material; }
+    // 🔹 Getters
+    public int getIdBarco() { return idBarco; }
+    public String getNomeBarco() { return nomeBarco; }
+    public String getTipoBarco() { return tipoBarco; }
+    public String getMaterialBarco() { return materialBarco; }
+
+    // 🔹 Setters
+    public void setIdBarco(int idBarco) { this.idBarco = idBarco; }
+    public void setNomeBarco(String nomeBarco) { this.nomeBarco = nomeBarco; }
+    public void setTipoBarco(String tipoBarco) { this.tipoBarco = tipoBarco; }
+    public void setMaterialBarco(String materialBarco) { this.materialBarco = materialBarco; }
 
     @Override
     public String toString() {
         return "Barco{" +
-                "id='" + id + '\'' +
-                ", nome='" + nome + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", cor='" + cor + '\'' +
-                ", tamanho=" + tamanho +
-                ", material='" + material + '\'' +
+                "idBarco=" + idBarco +
+                ", nomeBarco='" + nomeBarco + '\'' +
+                ", tipoBarco='" + tipoBarco + '\'' +
+                ", materialBarco='" + materialBarco + '\'' +
                 '}';
     }
 }

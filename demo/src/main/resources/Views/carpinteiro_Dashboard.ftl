@@ -40,13 +40,55 @@
                     </ul>
                 </nav>
             </div>
-            
+
             <h2 class="pedidos">Pedidos Recebidos</h2>
-            <div class="pedidos-container" id="pedidos-container"></div>
+            <div class="pedidos-container" id="pedidos-container">
+
+                <#if pedidosComUser?? && (pedidosComUser?size > 0)>
+                    <div class="lista-pedidos">
+                        <#list pedidosComUser as item>
+                            <#assign pedido = item.pedido>
+                            <#assign cliente = item.cliente>
+                            <#if pedido.status == "Cancelado">
+                                <div class="card-pedido cancelado">
+                                    <h3>Pedido #${pedido.id} (Cancelado)</h3>
+                                    <p><strong>Cliente:</strong> ${cliente.name} (${cliente.email})</p>
+                                    <p>Este pedido foi cancelado.</p>
+                                </div>
+                                <#continue>
+                            <#else>
+
+                            <div class="card-pedido">
+                                <h3>Pedido #${pedido.id}</h3>
+                                <p><strong>Cliente:</strong> ${cliente.name} (${cliente.email})</p>
+                                <p><strong>Descrição:</strong> ${pedido.descricao}</p>
+
+                                <#if pedido.barcoEscolhido??>
+                                    <p><strong>Barco:</strong> ${pedido.barcoEscolhido}</p>
+                                <#elseif pedido.barcoPersonalizado??>
+                                    <p><strong>Barco Personalizado:</strong> ${pedido.barcoPersonalizado}</p>
+                                </#if>
+
+                                <p><strong>Status:</strong> ${pedido.status}</p>
+
+                                <p><strong>Preço:</strong>
+                                    <#if pedido.preco?? && pedido.preco != 0>
+                                        R$ ${pedido.preco}
+                                    <#else>
+                                        (A definir)
+                                    </#if>
+                                </p>
+
+                                <p><strong>Período:</strong> ${pedido.dataInicio} → ${pedido.dataFim}</p>
+                            </div>
+                            </#if>
+                        </#list>
+                    </div>
+                <#else>
+                    <p>Nenhum pedido foi feito ainda.</p>
+                </#if>
+            </div>
         </div>
-
-
-        <script src="js/carpinteiro_Dashboard.js"></script>
     </div>
 </body>
 

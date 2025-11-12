@@ -109,3 +109,8 @@
 .pedidos{
     color:#1ecfff ;
 }
+
+.sem-preco {
+  color: #888;
+  font-style: italic;
+}

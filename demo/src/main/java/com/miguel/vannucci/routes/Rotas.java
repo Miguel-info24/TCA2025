@@ -35,5 +35,7 @@ public class Rotas {
         app.get("/cliente_Dashboard/fazerPedido", clienteController.exibirFazerPedido); // Exibe página
         app.post("/cliente_Dashboard/fazerPedido", clienteController.fazerPedido);      // Envia formulário
         app.get("/cliente_Dashboard/cancelarPedido", clienteController.cancelarPedido);
+        app.post("/cliente_Dashboard/cancelarPedido", clienteController.cancelarPedidoPost);
+
     }
 }

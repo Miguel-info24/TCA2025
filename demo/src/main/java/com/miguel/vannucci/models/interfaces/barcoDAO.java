@@ -1,11 +1,14 @@
 package com.miguel.vannucci.models.interfaces;
 
+import java.util.List;
+
 import com.miguel.vannucci.models.Barco;
 
 public interface barcoDAO {
-    int addBarco(int id, String nome, String tipo, String cor, double tamanho, String material);
-    boolean updateBarco(int id, String nome, String tipo, String cor, double tamanho, String material);
-    boolean deleteBarco(int id);
-    java.util.List<Barco> getBarcos();
-    java.util.List<Barco> getBarcosById(int id);
+    int addBarco(int idBarco, String nomeBarco, String tipoBarco, String materialBarco);
+    boolean updateBarco(int idBarco, String nomeBarco, String tipoBarco, String materialBarco);
+    boolean deleteBarco(int idBarco);
+    List<Barco> getBarcos();
+    List<Barco> getBarcosById(int idBarco);
+    List<Barco> getBarcosByUserId(int idUser);
 }

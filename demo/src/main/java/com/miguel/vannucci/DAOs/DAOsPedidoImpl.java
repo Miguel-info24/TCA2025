@@ -17,8 +17,10 @@ public class DAOsPedidoImpl implements pedidoDAO {
     private static final Connection connection = FabricaConexoes.getInstance().getConnection();
 
     @Override
-    public int addPedido(int idUser, String descricao, double preco, String status, LocalDate dataInicio, LocalDate dataFim, int idBarco) {
-        String query = "INSERT INTO TCA_Barcos_pedido (idUser, descricao_pedido, preco, status_pedido, data_inicio, data_fim, id_Barco) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public int addPedido(int idUser, String descricao, double preco, String status,
+            LocalDate dataInicio, LocalDate dataFim, Integer idBarco,
+            String tamanhoPedido, String corPedido, String barcoPersonalizado) {
+        String query = "INSERT INTO TCA_Barcos_pedido (idUser, descricao_pedido, preco, status_pedido, data_inicio, data_fim, id_Barco, tamanho_pedido, cor_pedido, barco_personalizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, idUser);
             stmt.setString(2, descricao);
@@ -26,7 +28,14 @@ public class DAOsPedidoImpl implements pedidoDAO {
             stmt.setString(4, status);
             stmt.setDate(5, Date.valueOf(dataInicio));
             stmt.setDate(6, Date.valueOf(dataFim));
-            stmt.setInt(7, idBarco);
+            if (idBarco != null) {
+                stmt.setInt(7, idBarco);
+            } else {
+                stmt.setNull(7, java.sql.Types.INTEGER);
+            }
+            stmt.setString(8, tamanhoPedido);
+            stmt.setString(9, corPedido);
+            stmt.setString(10, barcoPersonalizado);
             stmt.executeUpdate();
             return 1;
         } catch (Exception e) {
@@ -42,6 +51,19 @@ public class DAOsPedidoImpl implements pedidoDAO {
             stmt.setInt(1, idPedido);
             stmt.executeUpdate();
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean cancelarPedido(int idPedido) {
+        String sql = "UPDATE TCA_Barcos_pedido SET status_pedido = 'Cancelado' WHERE id_pedido = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idPedido);
+            int rows = stmt.executeUpdate();
+            return rows > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -116,8 +138,7 @@ public class DAOsPedidoImpl implements pedidoDAO {
     @Override
     public int getIdUser() {
         String query = "SELECT idUser FROM TCA_Barcos_pedido LIMIT 1";
-        try (PreparedStatement stmt = connection.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {
                 return rs.getInt("idUser");
             }
@@ -130,8 +151,7 @@ public class DAOsPedidoImpl implements pedidoDAO {
     @Override
     public int getNextId() {
         String query = "SELECT COALESCE(MAX(id_pedido), 0) + 1 AS next_id FROM TCA_Barcos_pedido";
-        try (PreparedStatement stmt = connection.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {
                 return rs.getInt("next_id");
             }
@@ -142,15 +162,35 @@ public class DAOsPedidoImpl implements pedidoDAO {
     }
 
     private Pedido mapResultSetToPedido(ResultSet rs) throws Exception {
+        Integer idBarcoMolde = null;
+        int idBarcoRaw = rs.getInt("id_Barco");
+        if (!rs.wasNull()) {
+            idBarcoMolde = idBarcoRaw;
+        }
+
+        String barcoPersonalizado = null;
+        try {
+            barcoPersonalizado = rs.getString("barco_personalizado");
+        } catch (Exception ignored) {
+        }
+
+        String descricao = rs.getString("descricao_pedido");
+        double preco = rs.getDouble("preco");
+        String status = rs.getString("status_pedido");
+        java.time.LocalDate dataInicio = rs.getDate("data_inicio").toLocalDate();
+        java.time.LocalDate dataFim = rs.getDate("data_fim").toLocalDate();
+
         return new Pedido(
                 rs.getInt("id_pedido"),
                 rs.getInt("idUser"),
-                rs.getString("descricao_pedido"),
-                rs.getDouble("preco"),
-                rs.getString("status_pedido"),
-                rs.getDate("data_inicio").toLocalDate(),
-                rs.getDate("data_fim").toLocalDate(),
-                null
+                idBarcoMolde,
+                barcoPersonalizado,
+                descricao,
+                preco,
+                status,
+                dataInicio,
+                dataFim
         );
     }
+
 }

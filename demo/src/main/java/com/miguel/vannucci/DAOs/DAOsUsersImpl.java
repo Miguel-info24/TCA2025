@@ -88,7 +88,7 @@ public class DAOsUsersImpl implements UserDAO {
 
     @Override
     public User getUserById(int userId) {
-        String query = "SELECT * FROM TCA_Barcos_User WHERE id = ?";
+        String query = "SELECT * FROM TCA_Barcos_User WHERE idUser = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/css/cliente_cancelarPedido.css">
     <title>Cancelar - pedido Cliente</title>
 </head>
+
 <body>
     <header>
         <div class="logo-area">
@@ -26,16 +28,24 @@
 
         <div class="content">
             <h2>Cancelar Pedido</h2>
-            <form class="cancelar-form" id="cancelarForm">
+            <form class="cancelar-form" id="cancelarForm" method="post" action="/cliente_Dashboard/cancelarPedido">
                 <label for="pedidoId">ID do Pedido</label>
-                <input type="text" id="pedidoId" placeholder="Ex: 12345">
+                <input type="text" id="pedidoId" name="id_pedido" placeholder="Ex: 12345" required>
 
                 <button type="submit">Cancelar Pedido</button>
             </form>
 
-            <div id="mensagemSucesso" style="display:none; color: #0da8e9; margin-top: 15px; font-weight: bold;">
-                <p>Pedido cancelado com sucesso!</p> 
-            </div>
+            <#if success??>
+                <div style="color: #0da8e9; margin-top: 15px; font-weight: bold;">
+                    Pedido cancelado com sucesso!
+                </div>
+            </#if>
+            <#if error??>
+                <div style="color: red; margin-top: 15px; font-weight: bold;">
+                    Erro ao cancelar o pedido.
+                </div>
+            </#if>
         </div>
 </body>
+
 </html>
